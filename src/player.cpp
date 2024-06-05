@@ -14,6 +14,7 @@ void Player::update() {
       {static_cast<float>(IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)),
        static_cast<float>(IsKeyDown(KEY_W) || IsKeyDown(KEY_UP))}));
 
-  position = Vector2Add(position, input_vector);
+  position =
+      Vector2Add(position, Vector2Scale(input_vector, GetFrameTime() * 180.0f));
 }
 void Player::draw() { DrawTextureV(texture, position, WHITE); }
