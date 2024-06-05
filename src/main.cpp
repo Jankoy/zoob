@@ -3,13 +3,15 @@
 #include "game.hpp"
 #include "player.hpp"
 
+static Game game;
+
 int main(void) {
   InitWindow(800, 600, "Zoob");
   SetTargetFPS(60);
 
-  Game game;
-  game.add(std::make_unique<Player>(Vector2{120.0f, 120.0f}));
-  game.add(Tile{{10.0f, 10.0f}, {40.0f, 40.0f}, BROWN, true});
+  game.add(std::make_unique<Player>(Vector2{128.0f, 96.0f}));
+  game.add(std::make_unique<Player>(Vector2{256.0f, 192.0f}));
+  game.add(Tile{{32.0f, 32.0f}, {64.0f, 64.0f}, BROWN, true});
 
   while (!WindowShouldClose()) {
     game.update();

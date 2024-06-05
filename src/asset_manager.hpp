@@ -4,8 +4,8 @@
 #include <string>
 
 struct RawData {
-  const unsigned char *const data;
-  const size_t size;
+  const unsigned char *data;
+  size_t size;
 };
 
 class AssetManager {

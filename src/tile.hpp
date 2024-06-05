@@ -8,6 +8,5 @@ struct Tile {
   Color color;
   bool is_solid;
 
-  void update();
   void draw();
 };

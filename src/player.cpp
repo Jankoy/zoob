@@ -2,10 +2,8 @@
 
 #include <raymath.h>
 
-Player::Player(Vector2 position) : Entity(position) {
-  texture = AssetManager::load_texture("sprites/player.png");
-}
-Player::~Player() { UnloadTexture(texture); }
+Player::Player(Vector2 position)
+    : SpriteEntity(position, "sprites/player.png") {}
 
 void Player::update() {
   const Vector2 input_vector = Vector2Normalize(Vector2Subtract(
@@ -17,4 +15,4 @@ void Player::update() {
   position =
       Vector2Add(position, Vector2Scale(input_vector, GetFrameTime() * 180.0f));
 }
-void Player::draw() { DrawTextureV(texture, position, WHITE); }
+void Player::draw() { SpriteEntity::draw(); }

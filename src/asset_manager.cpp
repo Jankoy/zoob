@@ -2,6 +2,9 @@
 
 #include "bundle.h"
 #include <cstring>
+#include <unordered_map>
+
+static std::unordered_map<std::string, Texture> texture_cache;
 
 RawData AssetManager::load_data(const std::string &data_path) {
   for (size_t i = 0; i < resources_count; ++i)
@@ -17,6 +20,10 @@ Image AssetManager::load_image(const std::string &image_path) {
 }
 
 Texture AssetManager::load_texture(const std::string &texture_path) {
+  if (texture_cache.find(texture_path) != texture_cache.end())
+    return texture_cache[texture_path];
   Image image = AssetManager::load_image(texture_path);
-  return LoadTextureFromImage(image);
+  Texture texture = LoadTextureFromImage(image);
+  texture_cache[texture_path] = texture;
+  return texture;
 }

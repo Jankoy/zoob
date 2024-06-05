@@ -6,8 +6,6 @@ void Game::add(std::unique_ptr<Entity> entity) {
 void Game::add(Tile tile) { tiles.push_back(std::move(tile)); }
 
 void Game::update() {
-  for (auto &tile : tiles)
-    tile.update();
   for (auto &entity : entities)
     entity->update();
 }
